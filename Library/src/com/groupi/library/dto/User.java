@@ -1,21 +1,27 @@
-package com.groupi.library;
+package com.groupi.library.dto;
 
 import java.security.*;
 import java.util.UUID;
-public class User {
+
+/**
+ * Data object class for user info.
+ * @author Sarah Hansen
+ *
+ */
+public class User implements LibraryObject {
 	
 	//fields
-	private String userID;
+	private String id; //distinct from database auto-generated id; this is UniqueId
 	private String username;
-	private String encryptedPassword;
-	private boolean loggedIn = false; //do we need this? unsure
-	private Book[] booksHeld;
+	private String encryptedPassword; // might do this in mysql instead, idk
+	private boolean loggedIn = false; // may need some other token for this later
+	private Book[] booksHeld; // this is represented in DB through User-Book table
 	
 	//constructors
 	
 	//users shouldn't be created without both usernames and passwords
 	public User(String myUsername, String myPassword) {
-		this.userID = UUID.randomUUID().toString(); 
+		this.id = UUID.randomUUID().toString(); 
 		this.username = myUsername;
 		this.encryptedPassword = hash(myPassword);
 	}
@@ -29,14 +35,12 @@ public class User {
 		this.encryptedPassword = encryptedPassword;
 	}
 	
-	public String getUserID() {
-		return userID;
+	// id is read only
+	@Override
+	public String getId() {
+		return id;
 	}
 	
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
-
 	public String getUsername() {
 		return username;
 	}

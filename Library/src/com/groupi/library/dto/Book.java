@@ -1,9 +1,14 @@
-package com.groupi.library;
+package com.groupi.library.dto;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class Book {
+/**
+ * Data object class for book info
+ * @author Sarah Hansen
+ *
+ */
+public class Book implements LibraryObject {
 	
 	//fields
 	private String title;
@@ -12,14 +17,18 @@ public class Book {
 	private boolean onHold = false;
 	private boolean lentOut = false;
 	private LocalDate dueBack = null;
-	private String bookId;
+	private String id;
+	/* 
+	 * no copies field: each book will be tracked individually 
+	 * within the database using the book id assigned
+	*/
 	
 	//constructors
 	public Book(String myTitle, String myAuthor, LocalDate myPublicationDate) {
 		this.title = myTitle;
 		this.author = myAuthor;
 		this.publicatonDate = myPublicationDate;
-		this.bookId = UUID.randomUUID().toString();
+		this.id = UUID.randomUUID().toString();
 	}
 	
 	public Book(String myTitle, String myAuthor) {
@@ -43,46 +52,59 @@ public class Book {
 		}
 	}
 	
-
 	//getters and setters
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	public String getAuthor() {
 		return author;
 	}
+	
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
 	public LocalDate getPublicatonDate() {
 		return publicatonDate;
 	}
+	
 	public void setPublicatonDate(LocalDate publicatonDate) {
 		this.publicatonDate = publicatonDate;
 	}
+	
 	public boolean isOnHold() {
 		return onHold;
 	}
+	
 	public void setOnHold(boolean onHold) {
 		this.onHold = onHold;
 	}
+	
 	public boolean isLentOut() {
 		return lentOut;
 	}
+	
 	public void setLentOut(boolean lentOut) {
 		this.lentOut = lentOut;
 	}
+	
 	public LocalDate getDueBack() {
 		return dueBack;
 	}
+	
 	public void setDueBack(LocalDate dueBack) {
 		this.dueBack = dueBack;
 	}
-	public String getBookId() {
-		return bookId;
+	
+	// id is read only.
+	@Override
+	public String getId() {
+		return id;
 	}
 
 	
