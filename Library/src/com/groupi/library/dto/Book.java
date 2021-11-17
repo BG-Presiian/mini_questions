@@ -13,7 +13,7 @@ public class Book implements LibraryObject {
 	//fields
 	private String title;
 	private String author;
-	private LocalDate publicatonDate;
+	private LocalDate publicationDate;
 	private boolean onHold = false;
 	private boolean lentOut = false;
 	private LocalDate dueBack = null;
@@ -27,7 +27,7 @@ public class Book implements LibraryObject {
 	public Book(String myTitle, String myAuthor, LocalDate myPublicationDate) {
 		this.title = myTitle;
 		this.author = myAuthor;
-		this.publicatonDate = myPublicationDate;
+		this.publicationDate = myPublicationDate;
 		this.id = UUID.randomUUID().toString();
 	}
 	
@@ -69,12 +69,12 @@ public class Book implements LibraryObject {
 		this.author = author;
 	}
 	
-	public LocalDate getPublicatonDate() {
-		return publicatonDate;
+	public LocalDate getPublicationDate() {
+		return publicationDate;
 	}
 	
-	public void setPublicatonDate(LocalDate publicatonDate) {
-		this.publicatonDate = publicatonDate;
+	public void setPublicationDate(LocalDate publicationDate) {
+		this.publicationDate = publicationDate;
 	}
 	
 	public boolean isOnHold() {
