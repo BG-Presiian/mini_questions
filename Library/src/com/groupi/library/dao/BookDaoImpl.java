@@ -65,4 +65,9 @@ public class BookDaoImpl implements BookDao {
 		return null;
 	}
 
+	public static Book getInstance(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
