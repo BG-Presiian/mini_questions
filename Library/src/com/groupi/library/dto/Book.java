@@ -18,25 +18,32 @@ public class Book implements LibraryObject {
 	private boolean lentOut = false;
 	private LocalDate dueBack = null;
 	private String id;
+	private int UID;
+	
+	
 	/* 
 	 * no copies field: each book will be tracked individually 
 	 * within the database using the book id assigned
 	*/
 	
 	//constructors
-	public Book(String myTitle, String myAuthor, LocalDate myPublicationDate) {
+	public Book(String id, String myTitle, String myAuthor, LocalDate myPublicationDate, boolean onHold, boolean lentOut, LocalDate dueBack, int UID ) {
+		this.id = UUID.randomUUID().toString();
 		this.title = myTitle;
 		this.author = myAuthor;
 		this.publicationDate = myPublicationDate;
-		this.id = UUID.randomUUID().toString();
+		this.onHold = onHold;
+		this.lentOut = lentOut;
+		this.dueBack = dueBack;
+		this.UID = UID;
 	}
 	
 	public Book(String myTitle, String myAuthor) {
-		this(myTitle, myAuthor, null);
+		this("2",myTitle, myAuthor, null, false,false, null, 0);
 	}
 	
 	public Book(String myTitle) {
-		this(myTitle, "unknown", null);
+		this("2",myTitle, "", null, false,false, null, 0);
 	}
 	
 	//methods
@@ -107,5 +114,21 @@ public class Book implements LibraryObject {
 		return id;
 	}
 
+	public int getUID() {
+		return UID;
+	}
+
+	public void setUID(int uID) {
+		this.UID = uID;
+	}
+
 	
+	
+	@Override
+	public String toString()
+	{
+		return "BookID= " + this.getId() + " \nTitle= " + this.getTitle() + " \nAuthor= " + this.getAuthor() + 
+				"\nPublicationDate= " + this.getPublicationDate() + "\nisOnHold= " + this.isOnHold() + " \nisLentOut= " + 
+				this.isLentOut() + " \nDueBack= " + this.getDueBack() + " \nUID= " + this.getUID();
+	}
 }

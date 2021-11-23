@@ -28,7 +28,7 @@ public interface LibraryObjectDao<L extends LibraryObject> {
 	 * Updates the current data in the database for the given object.
 	 * @param myData the new data 
 	 */
-	void update(L myData);
+	void update(L myData, String location);
 	
 	/**
 	 * Retrieves the data associated with the given id from the database.
