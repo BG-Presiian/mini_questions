@@ -1,6 +1,7 @@
 package com.groupi.library.dto;
 
 import java.security.*;
+import java.util.Arrays;
 import java.util.UUID;
 
 /**
@@ -9,7 +10,7 @@ import java.util.UUID;
  *
  */
 public class User implements LibraryObject {
-	
+
 	//fields
 	private String id; //distinct from database auto-generated id; this is UniqueId
 	private String username;
@@ -24,6 +25,12 @@ public class User implements LibraryObject {
 		this.id = UUID.randomUUID().toString(); 
 		this.username = myUsername;
 		this.encryptedPassword = hash(myPassword);
+	}
+	
+	public User(String uid, String myUsername, String myPassword) {
+		this.id=uid;
+		this.username=myUsername;
+		this.encryptedPassword=myPassword;
 	}
 	
 	//getters, setters
@@ -87,8 +94,16 @@ public class User implements LibraryObject {
 		}
 		return hashedPW;
 	}
-
-
+	
+	public static Book[] stringToList(String bookList) {
+		return null;
+	}
+	
+	@Override
+	public String toString() {
+		return "User: id= " + id + ", username= " + username + ", loggedIn= " + loggedIn + ", booksHeld= "
+				+ Arrays.toString(booksHeld);
+	}
 	
 	
 }
