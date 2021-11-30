@@ -1,5 +1,6 @@
 package com.groupi.library.dao;
 
+import com.groupi.library.dto.Book;
 import com.groupi.library.dto.User;
 
 /**
@@ -16,4 +17,8 @@ public interface UserDao extends LibraryObjectDao<User>{
 	 * that username.
 	 */
 	User getByUsername(String username);
+	/*checks password and username match*/
+	Boolean checkPass(String username, String password);
+	/*finds which held book are under user and turns them into an a list*/
+	Book[] getUsersHeldBooks(String uuid);
 }
