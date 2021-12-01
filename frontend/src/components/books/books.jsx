@@ -26,7 +26,7 @@ class Books extends Component {
 
     render() {
         let books = this.state.books.map(
-            book => <li key={book.id}><Link to={"/book" + book.id}>{book.name}</Link></li>
+            book => <li key={book.id}><Link to={"/books/" + book.id}>{book.name}</Link></li>
         )
         return(
             <>

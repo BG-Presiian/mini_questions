@@ -1,5 +1,11 @@
 import { Component } from "react";
 import Axios from "axios";
+import { useParams } from "react-router";
+
+function GetId() {
+    let { id } = useParams();
+    return id;
+}
 
 class Book extends Component {
     constructor(props) {
@@ -11,7 +17,6 @@ class Book extends Component {
     }
 
     loadBook = (id = 0) => {
-        alert(id);
         Axios.get("https://jsonplaceholder.typicode.com/users/" + id)
              .then(response => {
                  this.setState({
@@ -44,8 +49,8 @@ class Book extends Component {
     }
 
     componentDidMount() {
-        alert("here");
-        let id = this.props.match.id;
+        console.log(GetId());
+        let id = GetId();
         this.loadBook(id);
     }
 }

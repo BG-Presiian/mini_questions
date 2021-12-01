@@ -30,13 +30,13 @@ class App extends Component {
     return(
       <>
         <BrowserRouter>
-        <Provider value={ { getValue: this.state, setValue: this.updateState } }>
+          <Provider value={ { getValue: this.state, setValue: this.updateState } }>
             <Header></Header>
             <Routes>
               <Route index element={<Login/>} />
                 <Route path="user" element={ <User/> } auth={this.state.isAuthicated} />
-                <Route path="books/*" element={ <Books/> } auth={this.state.isAuthicated} />
-                  <Route path=":id" element={ <Book/> } auth={this.state.isAuthicated} />
+                <Route path='books' element={ <Books/> } auth={this.state.isAuthicated}/>
+                <Route path={'books/:id'} element={ <Book/> } auth={this.state.isAuthicated}/>
             </Routes>
           </Provider>
         </BrowserRouter>
