@@ -1,11 +1,6 @@
 import { Component } from "react";
 import Axios from "axios";
-import { useParams } from "react-router";
-
-function GetId() {
-    let { id } = useParams();
-    return id;
-}
+import withParams from '../../redux/withParams';
 
 class Book extends Component {
     constructor(props) {
@@ -49,10 +44,9 @@ class Book extends Component {
     }
 
     componentDidMount() {
-        console.log(GetId());
-        let id = GetId();
+        let { id } = this.props.params;
         this.loadBook(id);
     }
 }
 
-export default Book;
+export default withParams(Book);
