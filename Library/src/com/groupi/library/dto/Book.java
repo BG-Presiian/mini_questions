@@ -7,6 +7,7 @@ import java.util.UUID;
  * Data object class for book info
  * @author Sarah Hansen
  *
+ * 12/1/21: deleted string id field, replaced entirely with int id from database!
  */
 public class Book implements LibraryObject {
 	
@@ -17,8 +18,7 @@ public class Book implements LibraryObject {
 	private boolean onHold = false;
 	private boolean lentOut = false;
 	private LocalDate dueBack = null;
-	private String id;
-	private int UID;
+	private int id;
 	
 	
 	/* 
@@ -27,23 +27,22 @@ public class Book implements LibraryObject {
 	*/
 	
 	//constructors
-	public Book(String id, String myTitle, String myAuthor, LocalDate myPublicationDate, boolean onHold, boolean lentOut, LocalDate dueBack, int UID ) {
-		this.id = UUID.randomUUID().toString();
+	public Book(String myTitle, String myAuthor, LocalDate myPublicationDate, boolean onHold, boolean lentOut, LocalDate dueBack, int id) {
 		this.title = myTitle;
 		this.author = myAuthor;
 		this.publicationDate = myPublicationDate;
 		this.onHold = onHold;
 		this.lentOut = lentOut;
 		this.dueBack = dueBack;
-		this.UID = UID;
+		this.id = id;
 	}
 	
 	public Book(String myTitle, String myAuthor) {
-		this("2",myTitle, myAuthor, null, false,false, null, 0);
+		this(myTitle, myAuthor, null, false,false, null, 0);
 	}
 	
 	public Book(String myTitle) {
-		this("2",myTitle, "", null, false,false, null, 0);
+		this(myTitle, "", null, false,false, null, 0);
 	}
 	
 	//methods
@@ -110,18 +109,9 @@ public class Book implements LibraryObject {
 	
 	// id is read only.
 	@Override
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-
-	public int getUID() {
-		return UID;
-	}
-
-	public void setUID(int uID) {
-		this.UID = uID;
-	}
-
 	
 	
 	@Override
@@ -129,6 +119,6 @@ public class Book implements LibraryObject {
 	{
 		return "BookID= " + this.getId() + " \nTitle= " + this.getTitle() + " \nAuthor= " + this.getAuthor() + 
 				"\nPublicationDate= " + this.getPublicationDate() + "\nisOnHold= " + this.isOnHold() + " \nisLentOut= " + 
-				this.isLentOut() + " \nDueBack= " + this.getDueBack() + " \nUID= " + this.getUID();
+				this.isLentOut() + " \nDueBack= " + this.getDueBack();
 	}
 }

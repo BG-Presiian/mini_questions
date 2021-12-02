@@ -7,5 +7,5 @@ package com.groupi.library.dto;
  */
 public interface LibraryObject {
 
-	String getId();
+	int getId();
 }

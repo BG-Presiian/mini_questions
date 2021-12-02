@@ -12,7 +12,7 @@ import java.util.UUID;
 public class User implements LibraryObject {
 
 	//fields
-	private String id; //distinct from database auto-generated id; this is UniqueId
+	private int id; //same as id in db!
 	private String username;
 	private String encryptedPassword; // might do this in mysql instead, idk
 	private boolean loggedIn = false; // may need some other token for this later
@@ -21,16 +21,9 @@ public class User implements LibraryObject {
 	//constructors
 	
 	//users shouldn't be created without both usernames and passwords
-	public User(String myUsername, String myPassword) {
-		this.id = UUID.randomUUID().toString(); 
+	public User(String myUsername, String myPassword) { 
 		this.username = myUsername;
 		this.encryptedPassword = hash(myPassword);
-	}
-	
-	public User(String uid, String myUsername, String myPassword) {
-		this.id=uid;
-		this.username=myUsername;
-		this.encryptedPassword=myPassword;
 	}
 	
 	//getters, setters
@@ -44,7 +37,7 @@ public class User implements LibraryObject {
 	
 	// id is read only
 	@Override
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	

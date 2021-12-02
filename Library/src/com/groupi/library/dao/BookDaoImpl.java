@@ -52,7 +52,7 @@ public class BookDaoImpl extends DatabaseInitializer implements BookDao {
 			stmt.setBoolean(5, myData.isOnHold());
 			stmt.setBoolean(6, myData.isLentOut());
 			stmt.setDate(7, java.sql.Date.valueOf(myData.getDueBack()));
-			stmt.setInt(8, myData.getUID());
+			stmt.setInt(8, myData.getId());
 			stmt.executeUpdate();
 			
 			//DataBaseObjects.add(myData);
@@ -97,7 +97,7 @@ public class BookDaoImpl extends DatabaseInitializer implements BookDao {
 			stmt.setBoolean(4, myData.isOnHold());
 			stmt.setBoolean(5, myData.isLentOut());
 			stmt.setDate(6, java.sql.Date.valueOf(myData.getDueBack()));
-			stmt.setInt(7, myData.getUID());
+			stmt.setInt(7, myData.getId());
 			stmt.executeUpdate();
 			stmt.close();
 
@@ -124,7 +124,7 @@ public class BookDaoImpl extends DatabaseInitializer implements BookDao {
 			// Parse through the row in the table
 			while (rs.next()) {
 				// Gets the corresponding values within the table
-				boo = new Book(id, rs.getString(2), rs.getString(3), rs.getObject(4, LocalDate.class), rs.getBoolean(5),
+				boo = new Book(rs.getString(2), rs.getString(3), rs.getObject(4, LocalDate.class), rs.getBoolean(5),
 						rs.getBoolean(6), rs.getObject(7, LocalDate.class), rs.getInt(8));
 				System.out.println(boo.toString());
 			}
